@@ -1,0 +1,70 @@
+@import '~bootstrap/scss/functions';
+@import './helpers/_variables';
+// @import './helpers/_tables';
+@import '~bootstrap/scss/bootstrap';
+
+@import './products';
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC:200,300,400,500,700,900|Roboto:500&display=swap');
+
+
+* {
+  font-family: 'Roboto', 'Noto Sans TC', sans-serif;
+}
+
+.text-line-through {
+  text-decoration: line-through;
+}
+
+.logo {
+  background-color: transparent;
+  box-shadow: none;
+}
+.bg-cover {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+.bg-fixed{
+  background-attachment: fixed;
+}
+.image_shadow{
+  box-shadow: 0 0 12px 0.5px#000;
+}
+.mb-10{
+  margin-bottom: 5em;
+}
+.fly-item{
+  transition: all .5s;
+}
+.fly-left{
+  transform: translateX(-30%);
+  opacity: 0;
+}
+.fly-right{
+  transform: translateX(30%);
+  opacity: 0;
+}
+.fly-bottom{
+  transform: translateY(30%);
+  opacity: 0;
+}
+.fly-in{
+  transform: translateX(0%);
+  opacity: 1;
+}
+@media (min-width: 768px) {
+  .overZone-y {
+    margin-top: -2em;
+    margin-bottom: -2em;
+  }
+  .waiting-mode-lr {
+    writing-mode: vertical-lr;
+  }
+  .waiting-mode-rl {
+    writing-mode: vertical-rl;
+  }
+  .h1{
+    font-size: 80px;
+    
+  }
+}

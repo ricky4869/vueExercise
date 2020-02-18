@@ -1,27 +1,107 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home
+    path: '*',
+    redirect: '/login'
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
+    path: '/',
+    name: 'Home',
+    component: () => import('../components/Home.vue'),
+    children: [
+      {
+        path:'',
+        name: 'HomePage',
+        component: () => import('../views/HomePage.vue')
+      },
+      {
+        path:'aboutpage',
+        name: 'AboutPage',
+        component: () => import('../views/AboutPage.vue')
+      },
+      {
+        path: 'cartpage',
+        name: 'CartPage',
+        component: () => import('../views/CartPage.vue')
+      },
+      {
+        path: 'pay/:orderId',
+        name: 'Pay',
+        component: () => import('../views/Pay.vue')
+      },
+      {
+        path:'productspage',
+        name: 'ProductsPage',
+        component: () => import('../views/ProductsPage.vue'),
+        children:[
+          {
+            path: ':active',
+            name: 'AllProducts',
+            component: () => import('../views/AllProducts.vue')
+          },
+          {
+            path: 'product/:productId',
+            name: 'GetProduct',
+            component: () => import('../views/GetProduct.vue')
+          },
+        ]
+      }
+    ],
+  },
+  {
+    path: '/admin',
+    name: 'Dashboard',
+    component: () => import('../components/Dashboard.vue'),
+    // meta: { requiresAuth: true },
+    children:[
+      {
+        path: 'products',
+        name: 'Products',
+        component: () => import('../views/Products.vue'),
+        meta: { requiresAuth: true },
+      },
+      {
+        path: 'order',
+        name: 'Order',
+        component: () => import('../views/Order.vue'),
+        meta: { requiresAuth: true },
+      },
+      {
+        path: 'cupons',
+        name: 'Cupons',
+        component: () => import('../views/Cupons.vue'),
+        meta: { requiresAuth: true },
+      },
+      {
+        path: 'fakeorder',
+        name: 'FakeOrder',
+        component: () => import('../views/FakeOrder.vue'),
+        meta: { requiresAuth: true },
+      },
+      {
+        path: 'checkout/:orderId',
+        name: 'Checkout',
+        component: () => import('../views/Checkout.vue'),
+        meta: { requiresAuth: true },
+      }
+    ]
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import('../views/Login.vue')
+  },
 ]
 
 const router = new VueRouter({
-  routes
+  routes,
+  scrollBehavior(to, from, savedPosition){
+    return { x: 0, y: 0 }
+  }
 })
 
 export default router
