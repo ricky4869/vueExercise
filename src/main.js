@@ -14,6 +14,7 @@ import './bus';
 import filterCurrency from './filters/currency'
 import flyIn from './mixin/flyin'
 
+axios.defaults.withCredentials = true;
 Vue.config.productionTip = false
 Vue.use(VueAxios, axios);
 
@@ -43,8 +44,6 @@ configure({
 Object.keys(rules).forEach(rule => {
   extend(rule, rules[rule]);
 });
-
-axios.defaults.withCredentials = true;
 Vue.component('Loading', Loading);
 Vue.filter('currency', filterCurrency);
 Vue.mixin('flyIn', flyIn);

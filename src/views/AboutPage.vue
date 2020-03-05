@@ -47,7 +47,6 @@
           <ValidationObserver v-slot="{ handleSubmit }">
             <form @submit.prevent="handleSubmit(creatOrder)">
               <div class="row">
-                  
               <div class="form-group pb-2 col-12 col-md-3">
                 <ValidationProvider v-slot="{ errors, classes }" rules="required">
                   <label for="username">姓名</label>

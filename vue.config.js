@@ -1,3 +1,4 @@
 module.exports = {
-  publicPath: '/amyflix/'
+  publicPath: '/amyflix/',
+  parallel: false
 }

@@ -68,7 +68,8 @@ export default {
       };
       console.log(cart);
       this.$http.post(api, { data: cart }).then(response => {
-        console.log(response.data);
+        alert(response.data.message)
+        window.location.reload();
       });
     }
   },

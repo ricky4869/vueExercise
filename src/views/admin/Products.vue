@@ -34,7 +34,7 @@
         </tr>
       </tbody>
     </table>
-    <Pagination :pagination="pagination" @getPages="getPorducts"></Pagination>
+    <!-- <Pagination :pagination="pagination" @getPages="getPorducts"></Pagination> -->
     <div
       class="modal fade"
       id="productModal"
@@ -45,7 +45,7 @@
     >
       <div class="modal-dialog modal-lg" role="document">
         <ValidationObserver  v-slot="{ handleSubmit }">
-          <form @submit="handleSubmit(updataProduct)">
+          <form @submit.prevent="handleSubmit(updataProduct)">
             <div class="modal-content border-0">
               <div class="modal-header bg-dark text-white">
                 <h5 class="modal-title" id="exampleModalLabel">
@@ -268,6 +268,7 @@ export default {
         vm.products = response.data.products;
         vm.isLoading = false;
         vm.pagination = response.data.pagination;
+        console.log(response.data)
       });
     },
     getModal(isNEw, item) {
@@ -301,8 +302,7 @@ export default {
           vm.getPorducts(page);
         } else {
           vm.$bus.$emit("message:push", response.data.message, "success");
-          $("#productModal").modal("hide");
-          vm.getPorducts(page);
+          alert(response.data.message)
           console.log("新增失敗");
         }
       });
@@ -350,11 +350,19 @@ export default {
             }
           });
       }
+    },
+    check(){
+      const api = `${process.env.VUE_APP_APIPATH}api/user/check`;
+      const vm = this;
+      vm.$http.post(api).then(response => {
+        console.log(response)
+      })
     }
   },
 
   created() {
     this.getPorducts();
+    this.check();
   }
 };
 </script>

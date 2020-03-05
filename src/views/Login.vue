@@ -3,18 +3,18 @@
   <body class="text-center">
     <form class="form-signin" @submit.prevent="signin">
       <img class="mb-4" src="/docs/4.2/assets/brand/bootstrap-solid.svg" alt width="72" height="72" />
-      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-      <label for="inputEmail" class="sr-only">Email address</label>
+      <h1 class="h3 mb-3 font-weight-normal">管理者登入</h1>
+      <label for="inputEmail" class="sr-only">E-mail:</label>
       <input
         v-model="user.username"
         type="email"
         id="inputEmail"
         class="form-control"
-        placeholder="Email address"
+        placeholder="Email"
         required
         autofocus
       />
-      <label for="inputPassword" class="sr-only">Password</label>
+      <label for="inputPassword" class="sr-only">密碼:</label>
       <input
         v-model="user.password"
         type="password"
@@ -28,8 +28,8 @@
           <input type="checkbox" value="remember-me" /> Remember me
         </label>
       </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-      <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">登入</button>
+      <p class="mt-5 mb-3 text-muted">&copy; 登入後可管理商品新增、編輯、刪除</p>
     </form>
   </body>
 </div>
@@ -53,6 +53,8 @@ export default {
       this.$http.post(api, vm.user).then(response => {
         if(response.data.success){
           vm.$router.push('/admin/products')
+        }else{
+          alert(response.data.message)
         }
       });
     }

@@ -1,7 +1,6 @@
 export default {
     methods: {
         flyIn() {
-          
           const flyBoxs = document.querySelectorAll('.fly-box')
           const winTop = window.scrollY;
           const winBottom = window.scrollY + window.innerHeight;
@@ -18,9 +17,15 @@ export default {
                  })
             }
           });
+        },
+        addflyIn(){
+          window.addEventListener("scroll", this.flyIn);
         }
       },
-      created() {
-        window.addEventListener("scroll", this.flyIn);
+      mounted() {
+        this.addflyIn()
+      },
+      beforeDestroy(){
+        window.removeEventListener("scroll", this.flyIn);
       }
 }

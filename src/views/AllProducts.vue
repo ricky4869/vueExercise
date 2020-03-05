@@ -3,7 +3,7 @@
     <loading :active.sync="isLoading"></loading>
     <div class="row mt-4">
       <div
-        class="col-md-4 mb-4 product-item"
+        class="col-sm-6 col-lg-4 mb-4 product-item"
         v-for="item in filterProducts.slice(starProduct, starProduct + 10)"
         :key="item.id"
       >
@@ -32,7 +32,7 @@
               <i class="fas fa-spinner fa-spin" v-if="status.isItem === item.id"></i>
               查看更多
             </button>
-            <button type="button" class="btn btn-primary btn-sm ml-auto" @click="addCart(item.id)">
+            <button type="button" class="btn btn-primary btn-sm ml-auto" @click.prevent="addCart(item.id)">
               <i class="fas fa-spinner fa-spin" v-if="status.isCart === item.id"></i>
               加到購物車
             </button>
@@ -120,38 +120,10 @@ export default {
         product_id: id,
         qty
       };
-      console.log(cart);
       this.$http.post(api, { data: cart }).then(response => {
         alert(response.data.message)
         vm.status.isCart = "";
-        this.getCarts();
-      });
-    },
-    getCarts() {
-      const api = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_MYPATH}/cart`;
-      const vm = this;
-      this.$http.get(api).then(response => {
-        vm.carts = response.data.data;
-        vm.cartLen = response.data.data.carts.length;
-        window.scrollTo(0, 0);
-      });
-    },
-    removeCartModal(item) {
-      $("#delCartModal").modal("show");
-      this.delCart = item;
-      this.delCart.title = item.product.title;
-      this.cartTitle = item.product.title;
-      console.log(this.delCart);
-    },
-    removeCart() {
-      const vm = this;
-      const api = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_MYPATH}/cart/${vm.delCart.id}`;
-      vm.isLoading = true;
-      this.$http.delete(api).then(response => {
-        $("#delCartModal").modal("hide");
-        vm.getCarts();
-        console.log(vm.carts);
-        vm.isLoading = false;
+        window.location.reload();
       });
     },
     creatOrder() {
@@ -198,7 +170,7 @@ export default {
   background-size: 100%;
   transition: background-size 0.3s;
 }
-.product-image:hover {
+.product-item:hover .product-image{
   background-size: 120%;
 }
 </style>

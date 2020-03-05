@@ -1,12 +1,12 @@
 <template>
   <div>
-    <Navbar/>
+    <Navbar />
     <Alert></Alert>
     <div class="container-fluid">
       <div class="row">
-        <Sidebar/>
-         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-           <router-view></router-view>
+        <Sidebar />
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+          <router-view></router-view>
         </main>
       </div>
     </div>
@@ -15,17 +15,19 @@
 
 
 <script>
-
-import Navbar from './Navbar'
-import Sidebar from './Sidebar'
-import Alert from './AlertMessage'
+import Navbar from "./Navbar";
+import Sidebar from "./Sidebar";
+import Alert from "./AlertMessage";
 
 export default {
-  components:{
+  components: {
     Navbar,
     Sidebar,
-    Alert,
+    Alert
   },
+  destroyed() {
+    window.removeEventListener("scroll", this.fixedNavbar);
+  }
 };
 </script>
 

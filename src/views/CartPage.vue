@@ -227,12 +227,9 @@ export default {
     removeCart() {
       const vm = this;
       const api = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_MYPATH}/cart/${vm.delCart.id}`;
-      vm.isLoading = true;
       this.$http.delete(api).then(response => {
         $("#delCartModal").modal("hide");
-        vm.getCarts();
-        console.log(vm.carts);
-        vm.isLoading = false;
+        window.location.reload();
       });
     },
     useCoupon() {

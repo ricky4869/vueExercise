@@ -61,31 +61,31 @@ const routes = [
       {
         path: 'products',
         name: 'Products',
-        component: () => import('../views/Products.vue'),
+        component: () => import('../views/admin/Products.vue'),
         meta: { requiresAuth: true },
       },
       {
         path: 'order',
         name: 'Order',
-        component: () => import('../views/Order.vue'),
+        component: () => import('../views/admin/Order.vue'),
         meta: { requiresAuth: true },
       },
       {
         path: 'cupons',
         name: 'Cupons',
-        component: () => import('../views/Cupons.vue'),
+        component: () => import('../views/admin/Cupons.vue'),
         meta: { requiresAuth: true },
       },
       {
         path: 'fakeorder',
         name: 'FakeOrder',
-        component: () => import('../views/FakeOrder.vue'),
+        component: () => import('../views/admin/FakeOrder.vue'),
         meta: { requiresAuth: true },
       },
       {
         path: 'checkout/:orderId',
         name: 'Checkout',
-        component: () => import('../views/Checkout.vue'),
+        component: () => import('../views/admin/Checkout.vue'),
         meta: { requiresAuth: true },
       }
     ]

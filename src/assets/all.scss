@@ -6,7 +6,9 @@
 @import './products';
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC:200,300,400,500,700,900|Roboto:500&display=swap');
 
-
+body, html {
+  overflow-x: hidden;
+} 
 * {
   font-family: 'Roboto', 'Noto Sans TC', sans-serif;
 }
@@ -24,9 +26,6 @@
   background-size: cover;
   background-position: center center;
 }
-.bg-fixed{
-  background-attachment: fixed;
-}
 .image_shadow{
   box-shadow: 0 0 12px 0.5px#000;
 }
@@ -34,7 +33,7 @@
   margin-bottom: 5em;
 }
 .fly-item{
-  transition: all .5s;
+  transition: all .7s;
 }
 .fly-left{
   transform: translateX(-30%);
@@ -53,6 +52,9 @@
   opacity: 1;
 }
 @media (min-width: 768px) {
+  .bg-fixed{
+    background-attachment: fixed;
+  }
   .overZone-y {
     margin-top: -2em;
     margin-bottom: -2em;
