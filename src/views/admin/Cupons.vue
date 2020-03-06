@@ -94,7 +94,8 @@
 
 <script>
 import $ from "jquery";
-import Pagination from "../components/Pagination.vue";
+import Pagination from "../../components/Pagination.vue";
+import Check from '../../mixin/check';
 export default {
   data() {
     return {
@@ -105,6 +106,7 @@ export default {
       isNew: false
     };
   },
+  mixins:[Check],
   components: {
     Pagination: Pagination
   },
