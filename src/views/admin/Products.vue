@@ -34,7 +34,7 @@
         </tr>
       </tbody>
     </table>
-    <!-- <Pagination :pagination="pagination" @getPages="getPorducts"></Pagination> -->
+    <Pagination :pagination="pagination" @getPages="getPorducts"></Pagination>
     <div
       class="modal fade"
       id="productModal"
@@ -241,12 +241,8 @@
 
 <script>
 import $ from "jquery";
-<<<<<<< HEAD
 import Pagination from "../../components/Pagination";
-import Check from '../../mixin/check.js'
-=======
-import Pagination from "../components/Pagination.vue";
->>>>>>> parent of 18b1866... init commit
+import Check from '../../mixin/check'
 export default {
   data() {
     return {
@@ -261,6 +257,7 @@ export default {
       pagination: {}
     };
   },
+  mixins: [Check],
   components: {
     Pagination: Pagination
   },
@@ -355,36 +352,10 @@ export default {
             }
           });
       }
-    },
-<<<<<<< HEAD
-    // check(){
-    //         const api = `${process.env.VUE_APP_APIPATH}api/user/check`;
-    //         const vm = this;
-    //         vm.$http.post(api).then(response => {
-    //           if(!response.data.success){
-    //             vm.$router.push('/login')
-    //             console.log(response.data)
-    //           }
-    //         })
-    //       }
-=======
-    check(){
-      const api = `${process.env.VUE_APP_APIPATH}api/user/check`;
-      const vm = this;
-      vm.$http.post(api).then(response => {
-        console.log(response)
-      })
     }
->>>>>>> parent of 18b1866... init commit
   },
-
   created() {
     this.getPorducts();
-<<<<<<< HEAD
-    // this.check()
-=======
-    this.check();
->>>>>>> parent of 18b1866... init commit
   }
 };
 </script>
