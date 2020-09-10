@@ -7,9 +7,6 @@
 <script>
 export default {
   name: "App",
-  created() {
-    console.log(process.env.VUE_APP_APIPATH)
-  },
 };
 </script>
 

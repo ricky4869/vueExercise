@@ -14,9 +14,10 @@ import './bus';
 import filterCurrency from './filters/currency'
 import flyIn from './mixin/flyin'
 
-axios.defaults.withCredentials = true;
+
 Vue.config.productionTip = false
 Vue.use(VueAxios, axios);
+axios.defaults.withCredentials = true;
 
 Vue.component('ValidationProvider', ValidationProvider);
 Vue.component('ValidationObserver', ValidationObserver);

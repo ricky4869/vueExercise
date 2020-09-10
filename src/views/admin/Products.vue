@@ -34,7 +34,7 @@
         </tr>
       </tbody>
     </table>
-    <Pagination :pagination="pagination" @getPages="getPorducts"></Pagination>
+    <!-- <Pagination :pagination="pagination" @getPages="getPorducts"></Pagination> -->
     <div
       class="modal fade"
       id="productModal"
@@ -242,7 +242,7 @@
 <script>
 import $ from "jquery";
 import Pagination from "../../components/Pagination";
-import Check from '../../mixin/check'
+import Check from '../../mixin/check.js'
 export default {
   data() {
     return {
@@ -352,10 +352,21 @@ export default {
             }
           });
       }
-    }
+    },
+    // check(){
+    //         const api = `${process.env.VUE_APP_APIPATH}api/user/check`;
+    //         const vm = this;
+    //         vm.$http.post(api).then(response => {
+    //           if(!response.data.success){
+    //             vm.$router.push('/login')
+    //             console.log(response.data)
+    //           }
+    //         })
+    //       }
   },
   created() {
     this.getPorducts();
+    // this.check()
   }
 };
 </script>
