@@ -40,8 +40,7 @@
 </template>
 
 <script>
-import Pagination from "../../components/Pagination.vue";
-import Check from '../../mixin/check';
+import Pagination from "../components/Pagination.vue";
 export default {
   data() {
     return {
@@ -50,7 +49,6 @@ export default {
       pagination: {}
     };
   },
-  mixins:[Check],
   components:{
     'Pagination': Pagination
   },
